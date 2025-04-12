@@ -27,7 +27,7 @@
         }
 
         .logo {
-            height: 80px;
+            height: 120px;
             border-radius: 50%;
             margin-bottom: 1rem;
         }
@@ -182,7 +182,7 @@
 <body>
 
 <header>
-    <img src="https://via.placeholder.com/100" alt="Healthy Delicias Logo" class="logo">
+    <img src="logo.jpg" alt="Healthy Delicias Logo" class="logo">
     <nav>
         <ul>
             <li><a href="#inicio">Inicio</a></li>
@@ -262,22 +262,71 @@
                 </div>
             </div>
         </div>
+        <div class="pedido">
+            <h3>Resumen del Pedido</h3>
+            <ul id="resumen"></ul>
+            <p><strong>Total: $<span id="total">0.00</span></strong></p>
+            <a id="btnEnviar" class="btn" target="_blank">Enviar por WhatsApp</a>
+        </div>
+    </div>
+</section>
+
+<section id="sobre-nosotros" class="about-section">
+    <div class="container">
+        <h2>Sobre Nosotros</h2>
+        <p>En Healthy Delicias cocinamos con pasión. Comida saludable, ingredientes frescos y un sabor inigualable. ¡Ven y conócenos!</p>
     </div>
 </section>
 
 <section id="contacto" class="contact-section">
-    <h2>Contáctanos</h2>
-    <p>Estamos aquí para ayudarte, ¡háznos saber tus dudas o pedidos!</p>
-    <address>
-        Teléfono: <strong>+1 800 123 4567</strong> <br>
-        Email: <strong>info@healthydelicias.com</strong> <br>
-        WhatsApp: <a href="https://wa.me/18001234567">Enviar mensaje</a>
-    </address>
+    <div class="container">
+        <h2>Contacto</h2>
+        <p>Dirección: Calle Ficticia 123, Ciudad Ejemplo</p>
+        <p>Teléfono: (123) 456-7890</p>
+        <p>Email: contacto@healthydelicias.com</p>
+    </div>
 </section>
 
 <footer>
-    <p>&copy; 2025 Healthy Delicias | Todos los derechos reservados.</p>
+    <p>&copy; 2025 Healthy Delicias. Todos los derechos reservados.</p>
 </footer>
+
+<script>
+    const inputs = document.querySelectorAll('input[type="number"]');
+    const resumen = document.getElementById('resumen');
+    const totalSpan = document.getElementById('total');
+    const btnEnviar = document.getElementById('btnEnviar');
+
+    function actualizarResumen() {
+        let total = 0;
+        let mensaje = 'Hola! Me gustaría pedir:\n';
+        resumen.innerHTML = '';
+
+        inputs.forEach(input => {
+            const cantidad = parseInt(input.value);
+            const nombre = input.dataset.nombre;
+            const precio = parseFloat(input.dataset.precio);
+            if (cantidad > 0) {
+                const subtotal = cantidad * precio;
+                total += subtotal;
+                mensaje += `- ${cantidad} x ${nombre} ($${subtotal.toFixed(2)})\n`;
+                const li = document.createElement('li');
+                li.textContent = `${cantidad} x ${nombre} - $${subtotal.toFixed(2)}`;
+                resumen.appendChild(li);
+            }
+        });
+
+        totalSpan.textContent = total.toFixed(2);
+        mensaje += `\nTotal: $${total.toFixed(2)}`;
+
+        const numero = '18001234567'; // Reemplaza con tu número
+        btnEnviar.href = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+    }
+
+    inputs.forEach(input => {
+        input.addEventListener('input', actualizarResumen);
+    });
+</script>
 
 </body>
 </html>
