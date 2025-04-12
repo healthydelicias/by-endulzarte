@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nupote - Menú</title>
+    <meta name="description" content="Healthy Delicias ofrece platos deliciosos y saludables. ¡Explora nuestro menú y haz tu pedido ahora!">
+    <title>Healthy Delicias - Menú</title>
     <style>
         * {
             margin: 0;
@@ -85,6 +86,7 @@
 
         .btn:hover {
             background: #15803d; /* Cambiado a bg-green-700 */
+            transform: scale(1.05); /* Animación al pasar por encima */
         }
 
         section {
@@ -180,7 +182,7 @@
 <body>
 
 <header>
-    <img src="https://via.placeholder.com/100" alt="Nupote Logo" class="logo">
+    <img src="https://via.placeholder.com/100" alt="Healthy Delicias Logo" class="logo">
     <nav>
         <ul>
             <li><a href="#inicio">Inicio</a></li>
@@ -192,8 +194,8 @@
 </header>
 
 <section id="inicio" class="hero">
-    <h1>Bienvenido a Nupote</h1>
-    <p>Comida rica, ambiente único. ¡Explora nuestro menú ahora!</p>
+    <h1>Bienvenido a Healthy Delicias</h1>
+    <p>Comida saludable, deliciosa y preparada con amor. ¡Explora nuestro menú y haz tu pedido ahora!</p>
     <a href="#menu" class="btn">Ver Menú</a>
 </section>
 
@@ -212,18 +214,18 @@
             </div>
             <div class="menu-item">
                 <img src="https://images.unsplash.com/photo-1606788075761-2484f741b124?auto=format&fit=crop&w=800&q=60" alt="Plato 2">
-                <h3>Ensalada Nupote</h3>
+                <h3>Ensalada Healthy</h3>
                 <p>Fresca, crujiente y perfecta para acompañar tu comida.</p>
                 <span class="price">6.50</span>
                 <div class="controls">
-                    <label>Cantidad: <input type="number" min="0" value="0" data-nombre="Ensalada Nupote" data-precio="6.50"></label>
+                    <label>Cantidad: <input type="number" min="0" value="0" data-nombre="Ensalada Healthy" data-precio="6.50"></label>
                 </div>
             </div>
 
             <div class="menu-item">
                 <img src="https://images.unsplash.com/photo-1606788075761-2484f741b124?auto=format&fit=crop&w=800&q=60" alt="Plato 3">
                 <h3>Chinese</h3>
-                <p>Una delicia</p>
+                <p>Una delicia saludable llena de sabor.</p>
                 <span class="price">6.50</span>
                 <div class="controls">
                     <label>Cantidad: <input type="number" min="0" value="0" data-nombre="Chinese" data-precio="6.50"></label>
@@ -233,7 +235,7 @@
             <div class="menu-item">
                 <img src="https://images.unsplash.com/photo-1606788075761-2484f741b124?auto=format&fit=crop&w=800&q=60" alt="Plato 4">
                 <h3>Chinese</h3>
-                <p>Una delicia</p>
+                <p>Una delicia saludable llena de sabor.</p>
                 <span class="price">6.50</span>
                 <div class="controls">
                     <label>Cantidad: <input type="number" min="0" value="0" data-nombre="Chinese" data-precio="6.50"></label>
@@ -242,79 +244,40 @@
 
             <div class="menu-item">
                 <img src="https://images.unsplash.com/photo-1598514982846-0b9bfaeb2348?auto=format&fit=crop&w=800&q=60" alt="Plato 5">
-                <h3>Pizza Artesanal</h3>
-                <p>Masa fina, ingredientes frescos y sabor casero.</p>
-                <span class="price">12.00</span>
+                <h3>Pizza Vegetariana</h3>
+                <p>Tomate fresco, albahaca, y queso mozzarella.</p>
+                <span class="price">7.99</span>
                 <div class="controls">
-                    <label>Cantidad: <input type="number" min="0" value="0" data-nombre="Pizza Artesanal" data-precio="12.00"></label>
+                    <label>Cantidad: <input type="number" min="0" value="0" data-nombre="Pizza Vegetariana" data-precio="7.99"></label>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1200&q=60" alt="Plato 6">
+                <h3>Pasta Mediterránea</h3>
+                <p>Con tomate, aceitunas, y queso feta.</p>
+                <span class="price">9.99</span>
+                <div class="controls">
+                    <label>Cantidad: <input type="number" min="0" value="0" data-nombre="Pasta Mediterránea" data-precio="9.99"></label>
                 </div>
             </div>
         </div>
-        <div class="pedido">
-            <h3>Resumen del Pedido</h3>
-            <ul id="resumen"></ul>
-            <p><strong>Total: $<span id="total">0.00</span></strong></p>
-            <a id="btnEnviar" class="btn" target="_blank">Enviar por WhatsApp</a>
-        </div>
-    </div>
-</section>
-
-<section id="sobre-nosotros" class="about-section">
-    <div class="container">
-        <h2>Sobre Nosotros</h2>
-        <p>En Nupote cocinamos con pasión. Comida artesanal, ambiente acogedor y atención de primera. ¡Ven y conócenos!</p>
     </div>
 </section>
 
 <section id="contacto" class="contact-section">
-    <div class="container">
-        <h2>Contacto</h2>
-        <p>Dirección: Calle Ficticia 123, Ciudad Ejemplo</p>
-        <p>Teléfono: (123) 456-7890</p>
-        <p>Email: contacto@nupote.com</p>
-    </div>
+    <h2>Contáctanos</h2>
+    <p>Estamos aquí para ayudarte, ¡háznos saber tus dudas o pedidos!</p>
+    <address>
+        Teléfono: <strong>+1 800 123 4567</strong> <br>
+        Email: <strong>info@healthydelicias.com</strong> <br>
+        WhatsApp: <a href="https://wa.me/18001234567">Enviar mensaje</a>
+    </address>
 </section>
 
 <footer>
-    <p>&copy; 2025 Nupote. Todos los derechos reservados.</p>
+    <p>&copy; 2025 Healthy Delicias | Todos los derechos reservados.</p>
 </footer>
-
-<script>
-    const inputs = document.querySelectorAll('input[type="number"]');
-    const resumen = document.getElementById('resumen');
-    const totalSpan = document.getElementById('total');
-    const btnEnviar = document.getElementById('btnEnviar');
-
-    function actualizarResumen() {
-        let total = 0;
-        let mensaje = 'Hola! Me gustaría pedir:\n';
-        resumen.innerHTML = '';
-
-        inputs.forEach(input => {
-            const cantidad = parseInt(input.value);
-            const nombre = input.dataset.nombre;
-            const precio = parseFloat(input.dataset.precio);
-            if (cantidad > 0) {
-                const subtotal = cantidad * precio;
-                total += subtotal;
-                mensaje += `- ${cantidad} x ${nombre} ($${subtotal.toFixed(2)})\n`;
-                const li = document.createElement('li');
-                li.textContent = `${cantidad} x ${nombre} - $${subtotal.toFixed(2)}`;
-                resumen.appendChild(li);
-            }
-        });
-
-        totalSpan.textContent = total.toFixed(2);
-        mensaje += `\nTotal: $${total.toFixed(2)}`;
-
-        const numero = '18096780179'; // Reemplaza con tu número
-        btnEnviar.href = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-    }
-
-    inputs.forEach(input => {
-        input.addEventListener('input', actualizarResumen);
-    });
-</script>
 
 </body>
 </html>
