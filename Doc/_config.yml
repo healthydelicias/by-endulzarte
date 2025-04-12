@@ -1,0 +1,5 @@
+title: healthy Project
+description: Proyecto de arcade retro hecho en madera
+baseurl: "/healthy"  # Asegúrate de que esto coincida con tu repositorio en GitHub Pages
+url: "https://chinesexd.github.io"  # Tu URL de GitHub Pages
+theme: jekyll-theme-primer
