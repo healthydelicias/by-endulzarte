@@ -42,7 +42,7 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       width: 100%;
       max-width: 300px;
-      height: 500px; /* Aumentada para ver todo el contenido */
+      height: 600px; /* MÁS ALTO */
       text-align: center;
       transition: transform 0.3s;
       margin: auto;
@@ -145,14 +145,29 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       z-index: 1000;
     }
 
     .zoom-overlay img {
       max-width: 90%;
-      max-height: 90%;
+      max-height: 80%;
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      margin-bottom: 20px;
+    }
+
+    .zoom-overlay button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: #ffffff;
+      cursor: pointer;
+    }
+
+    .zoom-overlay button:hover {
+      background-color: #f1f1f1;
     }
 
     .info-section {
@@ -189,7 +204,7 @@
 
       .frame {
         max-width: 280px;
-        height: 500px;
+        height: 600px;
       }
     }
 
@@ -200,7 +215,7 @@
 
       .frame {
         max-width: 220px;
-        height: 420px;
+        height: 550px;
       }
     }
   </style>
@@ -333,14 +348,23 @@
     function zoomImagen(imagen) {
       const overlay = document.createElement('div');
       overlay.className = 'zoom-overlay';
+
       const img = document.createElement('img');
       img.src = imagen;
+
+      const closeBtn = document.createElement('button');
+      closeBtn.textContent = 'Cerrar';
+      closeBtn.onclick = () => document.body.removeChild(overlay);
+
       overlay.appendChild(img);
+      overlay.appendChild(closeBtn);
+
       overlay.addEventListener('click', (e) => {
         if (e.target === overlay) {
           document.body.removeChild(overlay);
         }
       });
+
       document.body.appendChild(overlay);
     }
   </script>
