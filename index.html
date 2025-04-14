@@ -31,7 +31,7 @@
     /* Contenedor de los productos en una cuadrícula */
     .menu-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Esto hace que se ajusten dependiendo del tamaño de pantalla */
+      grid-template-columns: repeat(2, 1fr); /* Siempre dos columnas */
       gap: 15px;
       padding: 20px;
     }
@@ -154,7 +154,7 @@
 
     /* Responsive design */
     @media (max-width: 600px) {
-      /* Establecemos que haya 2 productos por fila en pantallas pequeñas */
+      /* En pantallas pequeñas, seguimos mostrando 2 productos por fila */
       .menu-container {
         grid-template-columns: repeat(2, 1fr); /* Dos columnas por fila */
       }
@@ -169,8 +169,9 @@
     }
 
     @media (max-width: 400px) {
+      /* En pantallas aún más pequeñas, se mantienen dos columnas */
       .menu-container {
-        grid-template-columns: 1fr; /* En pantallas más pequeñas, mostramos solo una columna */
+        grid-template-columns: repeat(2, 1fr); /* Siempre dos columnas */
       }
     }
   </style>
