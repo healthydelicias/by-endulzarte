@@ -29,10 +29,9 @@
     }
 
     .menu-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Ajuste para que los productos se distribuyan bien */
+      gap: 15px;
       padding: 20px;
     }
 
@@ -40,7 +39,7 @@
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      width: 300px;
+      width: 100%;
       text-align: center;
       transition: transform 0.3s;
     }
@@ -78,14 +77,11 @@
     }
 
     input[type="number"] {
-      width: 50px; /* Ajuste del tamaño */
+      width: 60px;
       padding: 5px;
       border-radius: 5px;
       border: 1px solid #ccc;
-      margin-top: 10px;
-      text-align: center;
-      font-size: 16px;
-      max-width: 60px;
+      margin-top: 5px;
     }
 
     #pedido-resumen {
@@ -118,7 +114,6 @@
       border-radius: 6px;
       text-decoration: none;
       text-align: center;
-      width: 100%;
     }
 
     #whatsapp-btn:hover {
@@ -158,44 +153,16 @@
 
     /* Responsive design */
     @media (max-width: 600px) {
-      .card {
-        width: 90%;
-      }
-
-      h1, h2 {
-        font-size: 22px;
+      .menu-container {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Ajuste de columnas para pantallas pequeñas */
       }
 
       .add-btn {
-        width: 100%;
+        width: 100%; /* Botón de agregar más grande y fácil de usar en móvil */
       }
 
-      input[type="number"] {
-        width: 50px;
-      }
-
-      #pedido-resumen {
-        width: 90%;
-      }
-
-      #whatsapp-btn {
-        font-size: 16px;
-        padding: 10px;
-      }
-    }
-
-    @media (max-width: 400px) {
-      .add-btn {
-        font-size: 14px;
-      }
-
-      input[type="number"] {
-        font-size: 16px;
-      }
-
-      #whatsapp-btn {
-        font-size: 14px;
-        padding: 8px;
+      .card img {
+        height: 180px; /* Ajuste para que las imágenes no sean tan grandes en dispositivos móviles */
       }
     }
   </style>
@@ -217,7 +184,7 @@
   <div class="info-section">
     <h2>Sobre Nosotros</h2>
     <p>En Healthy Delicias cocinamos con pasión. Comida saludable, ingredientes frescos y un sabor inigualable.</p>
-
+    
     <h2>Contactos</h2>
     <p>Dirección: Calle Botoncillo, SAJOMA</p>
     <p>Teléfono: 809-678-0179</p>
@@ -289,23 +256,24 @@
     function mostrarPedido() {
       listaPedido.innerHTML = '';
       let total = 0;
-      let mensaje = 'Hola! Me gustaría pedir:\n';
 
       carrito.forEach(item => {
         const subtotal = item.precio * item.cantidad;
         total += subtotal;
-        mensaje += `- ${item.cantidad} x ${item.nombre} (RD$${subtotal.toFixed(2)})\n`;
 
         const li = document.createElement('li');
-        li.textContent = `${item.cantidad} x ${item.nombre} - RD$ ${subtotal.toFixed(2)}`;
+        li.textContent = `${item.nombre} x${item.cantidad} = RD$ ${subtotal.toFixed(2)}`;
         listaPedido.appendChild(li);
       });
 
       totalSpan.textContent = total.toFixed(2);
-      mensaje += `\nTotal: RD$${total.toFixed(2)}`;
 
-      const numero = '18096780179';
-      whatsappBtn.href = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+      const mensaje = encodeURIComponent("Hola, quiero ordenar:\n" +
+        carrito.map(item => `• ${item.nombre} x${item.cantidad} = RD$ ${item.precio * item.cantidad}`).join('\n') +
+        `\nTotal: RD$ ${total.toFixed(2)}`
+      );
+
+      whatsappBtn.href = `https://wa.me/18096780179?text=${mensaje}`;
     }
 
     function zoomImagen(imagenURL) {
