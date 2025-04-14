@@ -18,6 +18,7 @@
       color: #4CAF50;
       text-align: center;
       padding: 10px;
+      font-size: 24px; /* Fuente más pequeña */
     }
 
     .logo {
@@ -41,8 +42,8 @@
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       width: 100%;
-      max-width: 300px; /* Ajuste de ancho máximo para las tarjetas */
-      height: 350px; /* Ajuste de altura para las tarjetas */
+      max-width: 240px; /* Ajuste aún más pequeño para las tarjetas */
+      height: 300px; /* Ajuste de altura */
       text-align: center;
       transition: transform 0.3s;
       margin: auto;
@@ -54,7 +55,7 @@
 
     .card img {
       width: 100%;
-      height: 180px; /* Ajuste de la altura de la imagen */
+      height: 160px; /* Ajuste de la altura de la imagen */
       object-fit: cover;
       cursor: pointer;
       border-top-left-radius: 12px;
@@ -62,17 +63,17 @@
     }
 
     .card-content {
-      padding: 15px;
+      padding: 10px; /* Menos espacio interno */
     }
 
     .add-btn {
       background-color: #4CAF50;
       border: none;
       color: white;
-      padding: 10px 16px;
+      padding: 8px 14px;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 14px; /* Fuente más pequeña */
       width: 100%;
     }
 
@@ -81,7 +82,7 @@
     }
 
     input[type="number"] {
-      width: 60px;
+      width: 50px;
       padding: 5px;
       border-radius: 5px;
       border: 1px solid #ccc;
@@ -172,12 +173,12 @@
       }
 
       .card img {
-        height: 180px; /* Ajuste para que las imágenes no sean tan grandes en dispositivos móviles */
+        height: 160px; /* Ajuste para que las imágenes no sean tan grandes en dispositivos móviles */
       }
 
       .card {
-        max-width: 250px; /* Ajuste de tamaño de las tarjetas */
-        height: 320px; /* Ajuste de altura de las tarjetas */
+        max-width: 220px; /* Ajuste de tamaño de las tarjetas */
+        height: 280px; /* Ajuste de altura de las tarjetas */
       }
     }
 
@@ -188,8 +189,8 @@
       }
 
       .card {
-        max-width: 220px; /* Ajuste aún más pequeño para pantallas pequeñas */
-        height: 280px;
+        max-width: 200px; /* Ajuste aún más pequeño para pantallas pequeñas */
+        height: 250px;
       }
     }
   </style>
@@ -240,6 +241,67 @@
         precio: 400,
         imagen: 'panguineo.jpg',
         descripcion: 'Suave y sabroso pan de guineo casero.'
+      },
+      // 10 artículos más de "Tres Leches", ahora como productos individuales
+      {
+        nombre: 'Tres Leches con Frutas 9oz',
+        precio: 70,
+        imagen: '3leche.jpg',
+        descripcion: 'Pastel tres leches con frutas frescas.'
+      },
+      {
+        nombre: 'Tres Leches con Frutas 9oz',
+        precio: 70,
+        imagen: '3leche.jpg',
+        descripcion: 'Pastel tres leches con frutas frescas.'
+      },
+      {
+        nombre: 'Tres Leches con Frutas 9oz',
+        precio: 70,
+        imagen: '3leche.jpg',
+        descripcion: 'Pastel tres leches con frutas frescas.'
+      },
+      {
+        nombre: 'Tres Leches con Frutas 9oz',
+        precio: 70,
+        imagen: '3leche.jpg',
+        descripcion: 'Pastel tres leches con frutas frescas.'
+      },
+      {
+        nombre: 'Tres Leches con Frutas 9oz',
+        precio: 70,
+        imagen: '3leche.jpg',
+        descripcion: 'Pastel tres leches con frutas frescas.'
+      },
+      {
+        nombre: 'Tres Leches con Frutas 9oz',
+        precio: 70,
+        imagen: '3leche.jpg',
+        descripcion: 'Pastel tres leches con frutas frescas.'
+      },
+      {
+        nombre: 'Tres Leches con Frutas 9oz',
+        precio: 70,
+        imagen: '3leche.jpg',
+        descripcion: 'Pastel tres leches con frutas frescas.'
+      },
+      {
+        nombre: 'Tres Leches con Frutas 9oz',
+        precio: 70,
+        imagen: '3leche.jpg',
+        descripcion: 'Pastel tres leches con frutas frescas.'
+      },
+      {
+        nombre: 'Tres Leches con Frutas 9oz',
+        precio: 70,
+        imagen: '3leche.jpg',
+        descripcion: 'Pastel tres leches con frutas frescas.'
+      },
+      {
+        nombre: 'Tres Leches con Frutas 9oz',
+        precio: 70,
+        imagen: '3leche.jpg',
+        descripcion: 'Pastel tres leches con frutas frescas.'
       }
     ];
 
@@ -269,45 +331,41 @@
       const producto = productos[index];
       const cantidad = parseInt(document.getElementById(`cantidad-${index}`).value);
       if (cantidad < 1) return;
-
-      const existente = carrito.find(p => p.nombre === producto.nombre);
-      if (existente) {
-        existente.cantidad += cantidad;
+      
+      const item = carrito.find(item => item.nombre === producto.nombre);
+      if (item) {
+        item.cantidad += cantidad;
       } else {
-        carrito.push({ nombre: producto.nombre, precio: producto.precio, cantidad });
+        carrito.push({ ...producto, cantidad });
       }
-
-      mostrarPedido();
+      
+      actualizarResumen();
     }
 
-    function mostrarPedido() {
+    function actualizarResumen() {
       listaPedido.innerHTML = '';
       let total = 0;
-
       carrito.forEach(item => {
-        const subtotal = item.precio * item.cantidad;
-        total += subtotal;
-
         const li = document.createElement('li');
-        li.textContent = `${item.nombre} x${item.cantidad} = RD$ ${subtotal.toFixed(2)}`;
+        li.textContent = `${item.nombre} x${item.cantidad} - RD$ ${(item.precio * item.cantidad).toFixed(2)}`;
         listaPedido.appendChild(li);
+        total += item.precio * item.cantidad;
       });
-
       totalSpan.textContent = total.toFixed(2);
-
-      const mensaje = encodeURIComponent("Hola, quiero ordenar:\n" +
-        carrito.map(item => `• ${item.nombre} x${item.cantidad} = RD$ ${item.precio * item.cantidad}`).join('\n') +
-        `\nTotal: RD$ ${total.toFixed(2)}`
-      );
-
-      whatsappBtn.href = `https://wa.me/18096780179?text=${mensaje}`;
+      
+      const url = `https://wa.me/1?text=${encodeURIComponent('¡Hola! Quiero hacer un pedido de: ' + carrito.map(item => item.nombre + ' x' + item.cantidad).join(', '))}`;
+      whatsappBtn.setAttribute('href', url);
     }
 
-    function zoomImagen(imagenURL) {
+    function zoomImagen(imagen) {
       const overlay = document.createElement('div');
       overlay.className = 'zoom-overlay';
-      overlay.innerHTML = `<img src="${imagenURL}" alt="Zoom" onclick="document.body.removeChild(this.parentNode)">`;
+      overlay.innerHTML = `<img src="${imagen}" alt="Imagen ampliada"><div onclick="cerrarZoom()" style="position:absolute;top:10px;right:10px;color:white;font-size:24px;cursor:pointer;">&times;</div>`;
       document.body.appendChild(overlay);
+    }
+
+    function cerrarZoom() {
+      document.querySelector('.zoom-overlay').remove();
     }
   </script>
 </body>
