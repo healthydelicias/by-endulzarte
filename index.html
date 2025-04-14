@@ -43,8 +43,8 @@
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       width: 100%;
-      max-width: 240px; /* Ajuste aún más pequeño para las tarjetas */
-      height: 380px;
+      max-width: 300px; /* Aumentamos el tamaño de las tarjetas */
+      height: 450px; /* Aumentamos la altura para más espacio */
       text-align: center;
       transition: transform 0.3s;
       margin: auto;
@@ -58,7 +58,7 @@
 
     .frame img {
       width: 100%;
-      height: 180px; /* Ajuste de la altura de la imagen */
+      height: 220px; /* Aumentamos la altura de la imagen */
       object-fit: cover;
       cursor: pointer;
       border-top-left-radius: 12px;
@@ -66,17 +66,28 @@
     }
 
     .frame-content {
-      padding: 15px; /* Menos espacio interno */
+      padding: 20px; /* Más espacio dentro del contenedor */
+    }
+
+    .frame h3 {
+      font-size: 18px; /* Tamaño más grande para el nombre */
+      margin-bottom: 10px;
+    }
+
+    .frame p {
+      font-size: 14px; /* Fuente más pequeña para la descripción */
+      color: #777;
+      margin-bottom: 15px;
     }
 
     .add-btn {
       background-color: #4CAF50;
       border: none;
       color: white;
-      padding: 8px 14px;
+      padding: 10px 20px;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 14px; /* Fuente más pequeña */
+      font-size: 16px; /* Fuente más grande */
       width: 100%;
     }
 
@@ -85,7 +96,7 @@
     }
 
     input[type="number"] {
-      width: 50px;
+      width: 60px; /* Ajustamos el tamaño para que sea más visible */
       padding: 5px;
       border-radius: 5px;
       border: 1px solid #ccc;
@@ -176,12 +187,12 @@
       }
 
       .frame img {
-        height: 160px; /* Ajuste para que las imágenes no sean tan grandes en dispositivos móviles */
+        height: 180px; /* Ajuste para que las imágenes no sean tan grandes en dispositivos móviles */
       }
 
       .frame {
-        max-width: 220px; /* Ajuste de tamaño de las tarjetas */
-        height: 320px; /* Ajuste de altura de las tarjetas */
+        max-width: 280px; /* Ajuste de tamaño de las tarjetas */
+        height: 450px; /* Ajuste de altura de las tarjetas */
       }
     }
 
@@ -192,8 +203,8 @@
       }
 
       .frame {
-        max-width: 200px; /* Ajuste aún más pequeño para pantallas pequeñas */
-        height: 250px;
+        max-width: 220px; /* Ajuste aún más pequeño para pantallas pequeñas */
+        height: 350px;
       }
     }
   </style>
@@ -245,37 +256,6 @@
         imagen: 'panguineo.jpg',
         descripcion: 'Suave y sabroso pan de guineo casero.'
       },
-      // 10 artículos más de "Tres Leches", ahora como productos individuales
-      {
-        nombre: 'Tres Leches con Frutas 9oz',
-        precio: 70,
-        imagen: '3leche.jpg',
-        descripcion: 'Pastel tres leches con frutas frescas.'
-      },
-      {
-        nombre: 'Tres Leches con Frutas 9oz',
-        precio: 70,
-        imagen: '3leche.jpg',
-        descripcion: 'Pastel tres leches con frutas frescas.'
-      },
-      {
-        nombre: 'Tres Leches con Frutas 9oz',
-        precio: 70,
-        imagen: '3leche.jpg',
-        descripcion: 'Pastel tres leches con frutas frescas.'
-      },
-      {
-        nombre: 'Tres Leches con Frutas 9oz',
-        precio: 70,
-        imagen: '3leche.jpg',
-        descripcion: 'Pastel tres leches con frutas frescas.'
-      },
-      {
-        nombre: 'Tres Leches con Frutas 9oz',
-        precio: 70,
-        imagen: '3leche.jpg',
-        descripcion: 'Pastel tres leches con frutas frescas.'
-      },
       {
         nombre: 'Tres Leches con Frutas 9oz',
         precio: 70,
@@ -315,8 +295,8 @@
         <img src="${producto.imagen}" alt="${producto.nombre}" onclick="zoomImagen('${producto.imagen}')">
         <div class="frame-content">
           <h3>${producto.nombre}</h3>
-          <p>RD$ ${producto.precio.toFixed(2)}</p>
           <p>${producto.descripcion}</p>
+          <p>RD$ ${producto.precio.toFixed(2)}</p>
           <input type="number" id="cantidad-${index}" min="1" value="1">
           <button class="add-btn" onclick="agregarPedido(${index})">Agregar</button>
         </div>
@@ -355,4 +335,14 @@
     }
 
     function zoomImagen(imagen) {
-      const overlay = document
+      const overlay = document.createElement('div');
+      overlay.className = 'zoom-overlay';
+      const img = document.createElement('img');
+      img.src = imagen;
+      overlay.appendChild(img);
+      document.body.appendChild(overlay);
+      overlay.addEventListener('click', () => document.body.removeChild(overlay));
+    }
+  </script>
+</body>
+</html>
