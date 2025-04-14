@@ -14,28 +14,6 @@
       color: #333;
     }
 
-#notificacion {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  z-index: 999;
-  font-size: 16px;
-  animation: fadeOut 3s forwards;
-}
-
-@keyframes fadeOut {
-  0% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { opacity: 0; display: none; }
-}
-    
-    
     h1, h2 {
       color: #4CAF50;
       text-align: center;
@@ -326,7 +304,7 @@
     productos.forEach((producto, index) => {
       const frame = document.createElement('div');
       frame.className = 'frame';
-      frame.innerHTML = `
+      frame.innerHTML = 
         <img src="${producto.imagen}" alt="${producto.nombre}" onclick="zoomImagen('${producto.imagen}')">
         <div class="frame-content">
           <h3>${producto.nombre}</h3>
@@ -335,60 +313,38 @@
           <input type="number" id="cantidad-${index}" min="1" value="1">
           <button class="add-btn" onclick="agregarPedido(${index})">Agregar</button>
         </div>
-      `;
+      ;
       menu.appendChild(frame);
     });
 
     function agregarPedido(index) {
-  const producto = productos[index];
-  const cantidad = parseInt(document.getElementById(`cantidad-${index}`).value);
-  if (cantidad < 1) return;
-
-  const item = carrito.find(item => item.nombre === producto.nombre);
-  if (item) {
-    item.cantidad += cantidad;
-  } else {
-    carrito.push({ ...producto, cantidad });
-  }
-
-  mostrarNotificacion(`${producto.nombre} agregado a tu carrito`);
-  actualizarResumen();
-}
-
-function mostrarNotificacion(mensaje) {
-  const noti = document.getElementById('notificacion');
-  noti.textContent = mensaje;
-  noti.style.display = 'block';
-  noti.style.opacity = '1';
-  noti.style.animation = 'none';
-
-  void noti.offsetWidth; // reinicia la animación
-  noti.style.animation = 'fadeOut 3s forwards';
-}
-
+      const producto = productos[index];
+      const cantidad = parseInt(document.getElementById(cantidad-${index}).value);
+      if (cantidad < 1) return;
+      
+      const item = carrito.find(item => item.nombre === producto.nombre);
+      if (item) {
+        item.cantidad += cantidad;
+      } else {
+        carrito.push({ ...producto, cantidad });
+      }
+      
+      actualizarResumen();
     }
 
-   function actualizarResumen() {
-  listaPedido.innerHTML = '';
-  let total = 0;
-  let mensaje = '¡Hola! Quiero hacer un pedido de:\n';
-
-  carrito.forEach(item => {
-    const subtotal = item.precio * item.cantidad;
-    const li = document.createElement('li');
-    li.textContent = `${item.nombre} x${item.cantidad} - RD$ ${subtotal.toFixed(2)}`;
-    listaPedido.appendChild(li);
-    total += subtotal;
-
-    mensaje += `${item.nombre} x${item.cantidad} - RD$ ${subtotal.toFixed(2)}\n`;
-  });
-
-  totalSpan.textContent = total.toFixed(2);
-  mensaje += `\nTotal: RD$ ${total.toFixed(2)}`;
-
-  const url = `https://wa.me/18096780179?text=${encodeURIComponent(mensaje)}`;
-  whatsappBtn.setAttribute('href', url);
-
+    function actualizarResumen() {
+      listaPedido.innerHTML = '';
+      let total = 0;
+      carrito.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = ${item.nombre} x${item.cantidad} - RD$ ${(item.precio * item.cantidad).toFixed(2)};
+        listaPedido.appendChild(li);
+        total += item.precio * item.cantidad;
+      });
+      totalSpan.textContent = total.toFixed(2);
+      
+      const url = https://wa.me/18096780179?text=${encodeURIComponent('¡Hola! Quiero hacer un pedido de: ' + carrito.map(item => item.nombre + ' x' + item.cantidad).join(', '))};
+      whatsappBtn.setAttribute('href', url);
     }
 
     function zoomImagen(imagen) {
@@ -416,4 +372,3 @@ function mostrarNotificacion(mensaje) {
   </script>
 </body>
 </html>
-
