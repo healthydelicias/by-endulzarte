@@ -36,36 +36,36 @@
       padding: 15px;
     }
 
-    .frame {
-        background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      width: 100%;
-      max-width: 300px; /* Aumentamos el tamaño de las tarjetas */
-      height: 550px; /* Aumentamos la altura para más espacio */
-      text-align: center;
-      transition: transform 0.3s;
-      margin: auto;
-      overflow: hidden; /* Para no mostrar nada que se desborde */
-      border: 1px solid #e0e0e0; /* Borde sutil alrededor de cada frame */
-    }
+ .frame {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 280px;
+  height: 520px; /* REDUCIDO */
+  text-align: center;
+  transition: transform 0.3s;
+  margin: auto;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+}
 
     .frame:hover {
       transform: scale(1.05);
     }
 
-    .frame img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      cursor: pointer;
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
-    }
+   .frame img {
+  width: 100%;
+  height: 200px; /* REDUCIDO */
+  object-fit: cover;
+  cursor: pointer;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
 
-    .frame-content {
-      padding: 15px;
-    }
+ .frame-content {
+  padding: 10px; /* UN POCO MENOS ESPACIO INTERNO */
+}
 
     .frame h3 {
       font-size: 16px;
