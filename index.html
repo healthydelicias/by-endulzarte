@@ -185,6 +185,22 @@
       margin-top: 40px;
     }
 
+    /* Estilo del mensaje temporal */
+    #mensaje-agregado {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      z-index: 9999;
+      display: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
     @media (max-width: 1024px) {
       .menu-container {
         grid-template-columns: repeat(2, 1fr);
@@ -227,6 +243,9 @@
   <img src="logo.png" alt="Logo de Healthy Delicias" class="logo">
   <h1>Menú de Healthy Delicias</h1>
 
+  <!-- Mensaje de agregado al carrito -->
+  <div id="mensaje-agregado">¡Se ha agregado a tu carrito al final de la página!</div>
+
   <div class="menu-container" id="menu"></div>
 
   <div id="pedido-resumen">
@@ -264,28 +283,10 @@
         descripcion: 'Bizcocho húmedo bañado en tres leches y cubierto con frutas frescas.'
       },
       {
-        nombre: 'Banana Bread con Chizpas de Chocolate(Grande)',
+        nombre: 'Banana Bread con Chizpas de Chocolate (Grande)',
         precio: 400,
         imagen: 'panguineo.jpg',
         descripcion: 'Suave y sabroso pan de guineo casero.'
-      },
-      {
-        nombre: 'Tres Leches con Frutas 9oz',
-        precio: 70,
-        imagen: '3leche.jpg',
-        descripcion: 'Pastel tres leches con frutas frescas.'
-      },
-      {
-        nombre: 'Tres Leches con Frutas 9oz',
-        precio: 70,
-        imagen: '3leche.jpg',
-        descripcion: 'Pastel tres leches con frutas frescas.'
-      },
-      {
-        nombre: 'Tres Leches con Frutas 9oz',
-        precio: 70,
-        imagen: '3leche.jpg',
-        descripcion: 'Pastel tres leches con frutas frescas.'
       },
       {
         nombre: 'Tres Leches con Frutas 9oz',
@@ -300,11 +301,12 @@
     const listaPedido = document.getElementById('lista-pedido');
     const totalSpan = document.getElementById('total');
     const whatsappBtn = document.getElementById('whatsapp-btn');
+    const mensajeAgregado = document.getElementById('mensaje-agregado');
 
     productos.forEach((producto, index) => {
       const frame = document.createElement('div');
       frame.className = 'frame';
-      frame.innerHTML = 
+      frame.innerHTML = `
         <img src="${producto.imagen}" alt="${producto.nombre}" onclick="zoomImagen('${producto.imagen}')">
         <div class="frame-content">
           <h3>${producto.nombre}</h3>
@@ -313,13 +315,13 @@
           <input type="number" id="cantidad-${index}" min="1" value="1">
           <button class="add-btn" onclick="agregarPedido(${index})">Agregar</button>
         </div>
-      ;
+      `;
       menu.appendChild(frame);
     });
 
     function agregarPedido(index) {
       const producto = productos[index];
-      const cantidad = parseInt(document.getElementById(cantidad-${index}).value);
+      const cantidad = parseInt(document.getElementById(`cantidad-${index}`).value);
       if (cantidad < 1) return;
       
       const item = carrito.find(item => item.nombre === producto.nombre);
@@ -330,6 +332,7 @@
       }
       
       actualizarResumen();
+      mostrarMensaje();
     }
 
     function actualizarResumen() {
@@ -337,14 +340,21 @@
       let total = 0;
       carrito.forEach(item => {
         const li = document.createElement('li');
-        li.textContent = ${item.nombre} x${item.cantidad} - RD$ ${(item.precio * item.cantidad).toFixed(2)};
+        li.textContent = `${item.nombre} x${item.cantidad} - RD$ ${(item.precio * item.cantidad).toFixed(2)}`;
         listaPedido.appendChild(li);
         total += item.precio * item.cantidad;
       });
       totalSpan.textContent = total.toFixed(2);
       
-      const url = https://wa.me/1?text=${encodeURIComponent('¡Hola! Quiero hacer un pedido de: ' + carrito.map(item => item.nombre + ' x' + item.cantidad).join(', '))};
+      const url = `https://wa.me/1?text=${encodeURIComponent('¡Hola! Quiero hacer un pedido de: ' + carrito.map(item => item.nombre + ' x' + item.cantidad).join(', '))}`;
       whatsappBtn.setAttribute('href', url);
+    }
+
+    function mostrarMensaje() {
+      mensajeAgregado.style.display = 'block';
+      setTimeout(() => {
+        mensajeAgregado.style.display = 'none';
+      }, 3000);
     }
 
     function zoomImagen(imagen) {
