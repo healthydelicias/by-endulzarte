@@ -18,7 +18,7 @@
       color: #4CAF50;
       text-align: center;
       padding: 10px;
-      font-size: 22px;
+      font-size: 22px; /* Reducido un poco el tamaño de los títulos */
     }
 
     .logo {
@@ -44,7 +44,7 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       width: 100%;
       max-width: 300px;
-      height: 500px; /* Haciendo los frames un poco más largos */
+      height: 520px; /* Aumenté la altura de los frames */
       text-align: center;
       transition: transform 0.3s;
       margin: auto;
@@ -58,7 +58,7 @@
 
     .frame img {
       width: 100%;
-      height: 230px;
+      height: 220px;
       object-fit: cover;
       cursor: pointer;
       border-top-left-radius: 12px;
@@ -66,28 +66,28 @@
     }
 
     .frame-content {
-      padding: 15px;
+      padding: 20px;
     }
 
     .frame h3 {
-      font-size: 16px;
-      margin-bottom: 8px;
+      font-size: 16px; /* Reducido el tamaño del título */
+      margin-bottom: 10px;
     }
 
     .frame p {
-      font-size: 12px;
+      font-size: 14px;
       color: #777;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
     }
 
     .add-btn {
       background-color: #4CAF50;
       border: none;
       color: white;
-      padding: 14px 20px;
+      padding: 12px 20px;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 16px;
       width: 100%;
       margin-top: 10px;
     }
@@ -195,22 +195,22 @@
 
       .frame {
         max-width: 100%; /* Ajuste de tamaño de las tarjetas */
-        height: 520px;
+        height: 510px; /* Aumenté la altura en pantallas más pequeñas */
       }
 
       .frame h3 {
-        font-size: 14px; /* Títulos un poco más pequeños */
+        font-size: 16px; /* Títulos un poco más pequeños */
       }
 
       .frame p {
-        font-size: 11px; /* Descripción más pequeña para adaptarse */
+        font-size: 13px; /* Descripción más pequeña para adaptarse */
       }
     }
 
     @media (max-width: 400px) {
       .frame {
         max-width: 100%;
-        height: 470px;
+        height: 460px; /* Aumenté la altura de los frames en pantallas más pequeñas */
       }
 
       .frame img {
@@ -218,11 +218,11 @@
       }
 
       .frame h3 {
-        font-size: 13px;
+        font-size: 14px;
       }
 
       .frame p {
-        font-size: 10px;
+        font-size: 12px;
       }
 
       .add-btn {
