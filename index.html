@@ -18,7 +18,7 @@
       color: #4CAF50;
       text-align: center;
       padding: 10px;
-      font-size: 24px; /* Fuente más pequeña */
+      font-size: 24px;
     }
 
     .logo {
@@ -29,27 +29,25 @@
       height: auto;
     }
 
-    /* Contenedor de los productos en una cuadrícula */
     .menu-container {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* Siempre dos columnas */
+      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
       padding: 20px;
     }
 
-    /* Estilo para cada "frame" del artículo */
     .frame {
       background-color: #fff;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       width: 100%;
-      max-width: 300px; /* Aumentamos el tamaño de las tarjetas */
-      height: 550px; /* Aumentamos la altura para más espacio */
+      max-width: 300px;
+      height: 500px; /* Aumentada para ver todo el contenido */
       text-align: center;
       transition: transform 0.3s;
       margin: auto;
-      overflow: hidden; /* Para no mostrar nada que se desborde */
-      border: 1px solid #e0e0e0; /* Borde sutil alrededor de cada frame */
+      overflow: hidden;
+      border: 1px solid #e0e0e0;
     }
 
     .frame:hover {
@@ -58,7 +56,7 @@
 
     .frame img {
       width: 100%;
-      height: 220px; /* Aumentamos la altura de la imagen */
+      height: 220px;
       object-fit: cover;
       cursor: pointer;
       border-top-left-radius: 12px;
@@ -66,16 +64,16 @@
     }
 
     .frame-content {
-      padding: 20px; /* Más espacio dentro del contenedor */
+      padding: 20px;
     }
 
     .frame h3 {
-      font-size: 16px; /* Reduzco el tamaño del título */
+      font-size: 16px;
       margin-bottom: 10px;
     }
 
     .frame p {
-      font-size: 14px; /* Fuente más pequeña para la descripción */
+      font-size: 14px;
       color: #777;
       margin-bottom: 15px;
     }
@@ -84,10 +82,10 @@
       background-color: #4CAF50;
       border: none;
       color: white;
-      padding: 12px 20px; /* Hago el botón más grande */
+      padding: 10px 20px;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 16px; /* Fuente más grande */
+      font-size: 16px;
       width: 100%;
     }
 
@@ -96,7 +94,7 @@
     }
 
     input[type="number"] {
-      width: 60px; /* Ajustamos el tamaño para que sea más visible */
+      width: 60px;
       padding: 5px;
       border-radius: 5px;
       border: 1px solid #ccc;
@@ -170,41 +168,39 @@
       margin-top: 40px;
     }
 
-    /* Establecer siempre 2 columnas */
     @media (max-width: 1024px) {
       .menu-container {
-        grid-template-columns: repeat(2, 1fr); /* Siempre dos columnas */
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
     @media (max-width: 600px) {
       .menu-container {
-        grid-template-columns: repeat(2, 1fr); /* Siempre dos columnas */
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .add-btn {
-        width: 100%; /* Botón de agregar más grande y fácil de usar en móvil */
+        width: 100%;
       }
 
       .frame img {
-        height: 180px; /* Ajuste para que las imágenes no sean tan grandes en dispositivos móviles */
+        height: 180px;
       }
 
       .frame {
-        max-width: 280px; /* Ajuste de tamaño de las tarjetas */
-        height: 550px; /* Ajuste de altura de las tarjetas */
+        max-width: 280px;
+        height: 500px;
       }
     }
 
-    /* Ajustes para pantallas aún más pequeñas */
     @media (max-width: 400px) {
       .menu-container {
-        grid-template-columns: repeat(2, 1fr); /* Siempre dos columnas */
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .frame {
-        max-width: 220px; /* Ajuste aún más pequeño para pantallas pequeñas */
-        height: 400px;
+        max-width: 220px;
+        height: 420px;
       }
     }
   </style>
@@ -322,29 +318,30 @@
     function actualizarResumen() {
       listaPedido.innerHTML = '';
       let total = 0;
-      
       carrito.forEach(item => {
         const li = document.createElement('li');
         li.textContent = `${item.nombre} x${item.cantidad} - RD$ ${(item.precio * item.cantidad).toFixed(2)}`;
         listaPedido.appendChild(li);
         total += item.precio * item.cantidad;
       });
-      
       totalSpan.textContent = total.toFixed(2);
-
-      // Actualizar enlace de WhatsApp
-      whatsappBtn.href = `https://wa.me/8096780179?text=${encodeURIComponent('Me gustaría hacer un pedido:')}%0A${encodeURIComponent(carrito.map(item => `${item.nombre} x${item.cantidad} - RD$ ${(item.precio * item.cantidad).toFixed(2)}`).join('%0A'))}`;
+      
+      const url = `https://wa.me/1?text=${encodeURIComponent('¡Hola! Quiero hacer un pedido de: ' + carrito.map(item => item.nombre + ' x' + item.cantidad).join(', '))}`;
+      whatsappBtn.setAttribute('href', url);
     }
 
     function zoomImagen(imagen) {
       const overlay = document.createElement('div');
       overlay.className = 'zoom-overlay';
-      overlay.innerHTML = `<img src="${imagen}" alt="Zoomed image"><div class="zoom-close" onclick="closeZoom()">X</div>`;
+      const img = document.createElement('img');
+      img.src = imagen;
+      overlay.appendChild(img);
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          document.body.removeChild(overlay);
+        }
+      });
       document.body.appendChild(overlay);
-    }
-
-    function closeZoom() {
-      document.querySelector('.zoom-overlay').remove();
     }
   </script>
 </body>
