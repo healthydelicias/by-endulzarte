@@ -36,35 +36,42 @@
       padding: 15px;
     }
 
- .frame {
+.frame {
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   width: 100%;
   max-width: 280px;
-  height: 520px; /* REDUCIDO */
   text-align: center;
   transition: transform 0.3s;
   margin: auto;
   overflow: hidden;
   border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
 }
+
+
 
     .frame:hover {
       transform: scale(1.05);
     }
 
-   .frame img {
+.frame img {
   width: 100%;
-  height: 200px; /* REDUCIDO */
+  height: 160px; /* más pequeño */
   object-fit: cover;
   cursor: pointer;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
 
- .frame-content {
-  padding: 10px; /* UN POCO MENOS ESPACIO INTERNO */
+.frame-content {
+  padding: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
     .frame h3 {
