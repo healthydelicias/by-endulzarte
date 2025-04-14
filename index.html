@@ -336,20 +336,27 @@
       mostrarMensaje();
     }
 
-    function actualizarResumen() {
-      listaPedido.innerHTML = '';
-      let total = 0;
-      carrito.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = `${item.nombre} x${item.cantidad} - RD$ ${(item.precio * item.cantidad).toFixed(2)}`;
-        listaPedido.appendChild(li);
-        total += item.precio * item.cantidad;
-      });
-      totalSpan.textContent = total.toFixed(2);
-      
-      const url = `https://wa.me/18096780179text=${encodeURIComponent('¡Hola! Quiero hacer un pedido de: ' + carrito.map(item => item.nombre + ' x' + item.cantidad).join(', '))}`;
-      whatsappBtn.setAttribute('href', url);
-    }
+  function actualizarResumen() {
+  listaPedido.innerHTML = '';
+  let total = 0;
+  carrito.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = `${item.nombre} x${item.cantidad} - RD$ ${(item.precio * item.cantidad).toFixed(2)}`;
+    listaPedido.appendChild(li);
+    total += item.precio * item.cantidad;
+  });
+  totalSpan.textContent = total.toFixed(2);
+
+  // Crear el mensaje para WhatsApp
+  const mensaje = `¡Hola! Quiero hacer un pedido de:\n` +
+    carrito.map(item => `${item.nombre} x${item.cantidad}`).join('\n') + 
+    `\n\nTotal: RD$ ${total.toFixed(2)}`;
+
+  // Establecer el enlace de WhatsApp
+  const url = `https://wa.me/18096780179?text=${encodeURIComponent(mensaje)}`;
+  whatsappBtn.setAttribute('href', url);
+}
+    
 
     function mostrarMensaje() {
       mensajeAgregado.style.display = 'block';
