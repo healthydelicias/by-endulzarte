@@ -28,9 +28,10 @@
       height: auto;
     }
 
+    /* Contenedor de los productos en una cuadrícula */
     .menu-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Ajuste para que los productos se distribuyan bien */
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Esto hace que se ajusten dependiendo del tamaño de pantalla */
       gap: 15px;
       padding: 20px;
     }
@@ -153,8 +154,9 @@
 
     /* Responsive design */
     @media (max-width: 600px) {
+      /* Establecemos que haya 2 productos por fila en pantallas pequeñas */
       .menu-container {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Ajuste de columnas para pantallas pequeñas */
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas por fila */
       }
 
       .add-btn {
@@ -163,6 +165,12 @@
 
       .card img {
         height: 180px; /* Ajuste para que las imágenes no sean tan grandes en dispositivos móviles */
+      }
+    }
+
+    @media (max-width: 400px) {
+      .menu-container {
+        grid-template-columns: 1fr; /* En pantallas más pequeñas, mostramos solo una columna */
       }
     }
   </style>
