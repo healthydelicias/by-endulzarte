@@ -18,7 +18,7 @@
       color: #4CAF50;
       text-align: center;
       padding: 10px;
-      font-size: 24px; /* Fuente más pequeña */
+      font-size: 24px;
     }
 
     .logo {
@@ -29,10 +29,9 @@
       height: auto;
     }
 
-    /* Contenedor de los productos en una cuadrícula */
     .menu-container {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* Siempre dos columnas */
+      grid-template-columns: repeat(2, 1fr);
       gap: 15px;
       padding: 20px;
     }
@@ -42,8 +41,8 @@
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       width: 100%;
-      max-width: 240px; /* Ajuste aún más pequeño para las tarjetas */
-      height: 300px; /* Ajuste de altura */
+      max-width: 240px;
+      height: 300px;
       text-align: center;
       transition: transform 0.3s;
       margin: auto;
@@ -55,7 +54,7 @@
 
     .card img {
       width: 100%;
-      height: 160px; /* Ajuste de la altura de la imagen */
+      height: 160px;
       object-fit: cover;
       cursor: pointer;
       border-top-left-radius: 12px;
@@ -63,7 +62,7 @@
     }
 
     .card-content {
-      padding: 10px; /* Menos espacio interno */
+      padding: 10px;
     }
 
     .add-btn {
@@ -73,7 +72,7 @@
       padding: 8px 14px;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 14px; /* Fuente más pequeña */
+      font-size: 14px;
       width: 100%;
     }
 
@@ -156,40 +155,38 @@
       margin-top: 40px;
     }
 
-    /* Establecer siempre 2 columnas */
     @media (max-width: 1024px) {
       .menu-container {
-        grid-template-columns: repeat(2, 1fr); /* Siempre dos columnas */
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
     @media (max-width: 600px) {
       .menu-container {
-        grid-template-columns: repeat(2, 1fr); /* Siempre dos columnas */
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .add-btn {
-        width: 100%; /* Botón de agregar más grande y fácil de usar en móvil */
+        width: 100%;
       }
 
       .card img {
-        height: 160px; /* Ajuste para que las imágenes no sean tan grandes en dispositivos móviles */
+        height: 160px;
       }
 
       .card {
-        max-width: 220px; /* Ajuste de tamaño de las tarjetas */
-        height: 280px; /* Ajuste de altura de las tarjetas */
+        max-width: 220px;
+        height: 280px;
       }
     }
 
-    /* Ajustes para pantallas aún más pequeñas */
     @media (max-width: 400px) {
       .menu-container {
-        grid-template-columns: repeat(2, 1fr); /* Siempre dos columnas */
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .card {
-        max-width: 200px; /* Ajuste aún más pequeño para pantallas pequeñas */
+        max-width: 200px;
         height: 250px;
       }
     }
@@ -241,67 +238,6 @@
         precio: 400,
         imagen: 'panguineo.jpg',
         descripcion: 'Suave y sabroso pan de guineo casero.'
-      },
-      // 10 artículos más de "Tres Leches", ahora como productos individuales
-      {
-        nombre: 'Tres Leches con Frutas 9oz',
-        precio: 70,
-        imagen: '3leche.jpg',
-        descripcion: 'Pastel tres leches con frutas frescas.'
-      },
-      {
-        nombre: 'Tres Leches con Frutas 9oz',
-        precio: 70,
-        imagen: '3leche.jpg',
-        descripcion: 'Pastel tres leches con frutas frescas.'
-      },
-      {
-        nombre: 'Tres Leches con Frutas 9oz',
-        precio: 70,
-        imagen: '3leche.jpg',
-        descripcion: 'Pastel tres leches con frutas frescas.'
-      },
-      {
-        nombre: 'Tres Leches con Frutas 9oz',
-        precio: 70,
-        imagen: '3leche.jpg',
-        descripcion: 'Pastel tres leches con frutas frescas.'
-      },
-      {
-        nombre: 'Tres Leches con Frutas 9oz',
-        precio: 70,
-        imagen: '3leche.jpg',
-        descripcion: 'Pastel tres leches con frutas frescas.'
-      },
-      {
-        nombre: 'Tres Leches con Frutas 9oz',
-        precio: 70,
-        imagen: '3leche.jpg',
-        descripcion: 'Pastel tres leches con frutas frescas.'
-      },
-      {
-        nombre: 'Tres Leches con Frutas 9oz',
-        precio: 70,
-        imagen: '3leche.jpg',
-        descripcion: 'Pastel tres leches con frutas frescas.'
-      },
-      {
-        nombre: 'Tres Leches con Frutas 9oz',
-        precio: 70,
-        imagen: '3leche.jpg',
-        descripcion: 'Pastel tres leches con frutas frescas.'
-      },
-      {
-        nombre: 'Tres Leches con Frutas 9oz',
-        precio: 70,
-        imagen: '3leche.jpg',
-        descripcion: 'Pastel tres leches con frutas frescas.'
-      },
-      {
-        nombre: 'Tres Leches con Frutas 9oz',
-        precio: 70,
-        imagen: '3leche.jpg',
-        descripcion: 'Pastel tres leches con frutas frescas.'
       }
     ];
 
