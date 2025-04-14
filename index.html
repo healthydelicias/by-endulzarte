@@ -332,19 +332,27 @@
       actualizarResumen();
     }
 
-    function actualizarResumen() {
-      listaPedido.innerHTML = '';
-      let total = 0;
-      carrito.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = `${item.nombre} x${item.cantidad} - RD$ ${(item.precio * item.cantidad).toFixed(2)}`;
-        listaPedido.appendChild(li);
-        total += item.precio * item.cantidad;
-      });
-      totalSpan.textContent = total.toFixed(2);
-      
-      const url = `https://wa.me/18096780179?text=${encodeURIComponent('¡Hola! Quiero hacer un pedido de: ' + carrito.map(item => item.nombre + ' x' + item.cantidad).join(', '))}`;
-      whatsappBtn.setAttribute('href', url);
+   function actualizarResumen() {
+  listaPedido.innerHTML = '';
+  let total = 0;
+  let mensaje = '¡Hola! Quiero hacer un pedido de:\n';
+
+  carrito.forEach(item => {
+    const subtotal = item.precio * item.cantidad;
+    const li = document.createElement('li');
+    li.textContent = `${item.nombre} x${item.cantidad} - RD$ ${subtotal.toFixed(2)}`;
+    listaPedido.appendChild(li);
+    total += subtotal;
+
+    mensaje += `${item.nombre} x${item.cantidad} - RD$ ${subtotal.toFixed(2)}\n`;
+  });
+
+  totalSpan.textContent = total.toFixed(2);
+  mensaje += `\nTotal: RD$ ${total.toFixed(2)}`;
+
+  const url = `https://wa.me/18096780179?text=${encodeURIComponent(mensaje)}`;
+  whatsappBtn.setAttribute('href', url);
+
     }
 
     function zoomImagen(imagen) {
