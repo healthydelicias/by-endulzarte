@@ -152,11 +152,16 @@
       margin-top: 40px;
     }
 
-    /* Responsive design */
-    @media (max-width: 600px) {
-      /* En pantallas pequeñas, seguimos mostrando 2 productos por fila */
+    /* Establecer siempre 2 columnas */
+    @media (max-width: 1024px) {
       .menu-container {
-        grid-template-columns: repeat(2, 1fr); /* Dos columnas por fila */
+        grid-template-columns: repeat(2, 1fr); /* Siempre dos columnas */
+      }
+    }
+
+    @media (max-width: 600px) {
+      .menu-container {
+        grid-template-columns: repeat(2, 1fr); /* Siempre dos columnas */
       }
 
       .add-btn {
@@ -168,8 +173,8 @@
       }
     }
 
+    /* Ajustes para pantallas aún más pequeñas */
     @media (max-width: 400px) {
-      /* En pantallas aún más pequeñas, se mantienen dos columnas */
       .menu-container {
         grid-template-columns: repeat(2, 1fr); /* Siempre dos columnas */
       }
