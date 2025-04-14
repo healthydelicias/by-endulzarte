@@ -186,13 +186,13 @@
   </div>
 
   <div class="info-section">
-  <h2>Sobre Nosotros</h2>
-  <p>En Healthy Delicias cocinamos con pasión. Comida saludable, ingredientes frescos y un sabor inigualable.</p>
-  
-  <h2>Contactos</h2>
-  <p>Dirección: Calle Botoncillo, SAJOMA</p>
-  <p>Teléfono: 809-678-0179</p>
-</div>
+    <h2>Sobre Nosotros</h2>
+    <p>En Healthy Delicias cocinamos con pasión. Comida saludable, ingredientes frescos y un sabor inigualable.</p>
+
+    <h2>Contactos</h2>
+    <p>Dirección: Calle Botoncillo, SAJOMA</p>
+    <p>Teléfono: 809-678-0179</p>
+  </div>
 
   <div class="footer">
     © 2025 Healthy Delicias. Todos los derechos reservados.
@@ -260,24 +260,23 @@
     function mostrarPedido() {
       listaPedido.innerHTML = '';
       let total = 0;
+      let mensaje = 'Hola! Me gustaría pedir:\n';
 
       carrito.forEach(item => {
         const subtotal = item.precio * item.cantidad;
         total += subtotal;
+        mensaje += `- ${item.cantidad} x ${item.nombre} (RD$${subtotal.toFixed(2)})\n`;
 
         const li = document.createElement('li');
-        li.textContent = `${item.nombre} x${item.cantidad} = RD$ ${subtotal.toFixed(2)}`;
+        li.textContent = `${item.cantidad} x ${item.nombre} - RD$ ${subtotal.toFixed(2)}`;
         listaPedido.appendChild(li);
       });
 
       totalSpan.textContent = total.toFixed(2);
+      mensaje += `\nTotal: RD$${total.toFixed(2)}`;
 
-      const mensaje = encodeURIComponent("Hola, quiero ordenar:\n" +
-        carrito.map(item => `• ${item.nombre} x${item.cantidad} = RD$ ${item.precio * item.cantidad}`).join('\n') +
-        `\nTotal: RD$ ${total.toFixed(2)}`
-      );
-
-   whatsappBtn.href = `https://wa.me/18096780179?text=${mensaje}`;
+      const numero = '18096780179';
+      whatsappBtn.href = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
     }
 
     function zoomImagen(imagenURL) {
