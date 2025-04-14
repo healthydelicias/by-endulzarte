@@ -18,7 +18,7 @@
       color: #4CAF50;
       text-align: center;
       padding: 10px;
-      font-size: 24px;
+      font-size: 24px; /* Fuente más pequeña */
     }
 
     .logo {
@@ -29,40 +29,44 @@
       height: auto;
     }
 
+    /* Contenedor de los productos en una cuadrícula */
     .menu-container {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr); /* Siempre dos columnas */
       gap: 15px;
       padding: 20px;
     }
 
-    .card {
-      background: #fff;
+    /* Estilo para cada "frame" del artículo */
+    .frame {
+      background-color: #fff;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       width: 100%;
-      max-width: 240px;
-      height: 300px;
+      max-width: 240px; /* Ajuste aún más pequeño para las tarjetas */
+      height: auto;
       text-align: center;
       transition: transform 0.3s;
       margin: auto;
+      overflow: hidden; /* Para no mostrar nada que se desborde */
+      border: 1px solid #e0e0e0; /* Borde sutil alrededor de cada frame */
     }
 
-    .card:hover {
+    .frame:hover {
       transform: scale(1.02);
     }
 
-    .card img {
+    .frame img {
       width: 100%;
-      height: 160px;
+      height: 160px; /* Ajuste de la altura de la imagen */
       object-fit: cover;
       cursor: pointer;
       border-top-left-radius: 12px;
       border-top-right-radius: 12px;
     }
 
-    .card-content {
-      padding: 10px;
+    .frame-content {
+      padding: 10px; /* Menos espacio interno */
     }
 
     .add-btn {
@@ -72,7 +76,7 @@
       padding: 8px 14px;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 14px; /* Fuente más pequeña */
       width: 100%;
     }
 
@@ -155,38 +159,40 @@
       margin-top: 40px;
     }
 
+    /* Establecer siempre 2 columnas */
     @media (max-width: 1024px) {
       .menu-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* Siempre dos columnas */
       }
     }
 
     @media (max-width: 600px) {
       .menu-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* Siempre dos columnas */
       }
 
       .add-btn {
-        width: 100%;
+        width: 100%; /* Botón de agregar más grande y fácil de usar en móvil */
       }
 
-      .card img {
-        height: 160px;
+      .frame img {
+        height: 160px; /* Ajuste para que las imágenes no sean tan grandes en dispositivos móviles */
       }
 
-      .card {
-        max-width: 220px;
-        height: 280px;
+      .frame {
+        max-width: 220px; /* Ajuste de tamaño de las tarjetas */
+        height: 280px; /* Ajuste de altura de las tarjetas */
       }
     }
 
+    /* Ajustes para pantallas aún más pequeñas */
     @media (max-width: 400px) {
       .menu-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* Siempre dos columnas */
       }
 
-      .card {
-        max-width: 200px;
+      .frame {
+        max-width: 200px; /* Ajuste aún más pequeño para pantallas pequeñas */
         height: 250px;
       }
     }
@@ -238,6 +244,61 @@
         precio: 400,
         imagen: 'panguineo.jpg',
         descripcion: 'Suave y sabroso pan de guineo casero.'
+      },
+      // 10 artículos más de "Tres Leches", ahora como productos individuales
+      {
+        nombre: 'Tres Leches con Frutas 9oz',
+        precio: 70,
+        imagen: '3leche.jpg',
+        descripcion: 'Pastel tres leches con frutas frescas.'
+      },
+      {
+        nombre: 'Tres Leches con Frutas 9oz',
+        precio: 70,
+        imagen: '3leche.jpg',
+        descripcion: 'Pastel tres leches con frutas frescas.'
+      },
+      {
+        nombre: 'Tres Leches con Frutas 9oz',
+        precio: 70,
+        imagen: '3leche.jpg',
+        descripcion: 'Pastel tres leches con frutas frescas.'
+      },
+      {
+        nombre: 'Tres Leches con Frutas 9oz',
+        precio: 70,
+        imagen: '3leche.jpg',
+        descripcion: 'Pastel tres leches con frutas frescas.'
+      },
+      {
+        nombre: 'Tres Leches con Frutas 9oz',
+        precio: 70,
+        imagen: '3leche.jpg',
+        descripcion: 'Pastel tres leches con frutas frescas.'
+      },
+      {
+        nombre: 'Tres Leches con Frutas 9oz',
+        precio: 70,
+        imagen: '3leche.jpg',
+        descripcion: 'Pastel tres leches con frutas frescas.'
+      },
+      {
+        nombre: 'Tres Leches con Frutas 9oz',
+        precio: 70,
+        imagen: '3leche.jpg',
+        descripcion: 'Pastel tres leches con frutas frescas.'
+      },
+      {
+        nombre: 'Tres Leches con Frutas 9oz',
+        precio: 70,
+        imagen: '3leche.jpg',
+        descripcion: 'Pastel tres leches con frutas frescas.'
+      },
+      {
+        nombre: 'Tres Leches con Frutas 9oz',
+        precio: 70,
+        imagen: '3leche.jpg',
+        descripcion: 'Pastel tres leches con frutas frescas.'
       }
     ];
 
@@ -248,11 +309,11 @@
     const whatsappBtn = document.getElementById('whatsapp-btn');
 
     productos.forEach((producto, index) => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `
+      const frame = document.createElement('div');
+      frame.className = 'frame';
+      frame.innerHTML = `
         <img src="${producto.imagen}" alt="${producto.nombre}" onclick="zoomImagen('${producto.imagen}')">
-        <div class="card-content">
+        <div class="frame-content">
           <h3>${producto.nombre}</h3>
           <p>RD$ ${producto.precio.toFixed(2)}</p>
           <p>${producto.descripcion}</p>
@@ -260,7 +321,7 @@
           <button class="add-btn" onclick="agregarPedido(${index})">Agregar</button>
         </div>
       `;
-      menu.appendChild(card);
+      menu.appendChild(frame);
     });
 
     function agregarPedido(index) {
@@ -296,13 +357,11 @@
     function zoomImagen(imagen) {
       const overlay = document.createElement('div');
       overlay.className = 'zoom-overlay';
-      overlay.innerHTML = `<img src="${imagen}" alt="Imagen ampliada"><div onclick="cerrarZoom()" style="position:absolute;top:10px;right:10px;color:white;font-size:24px;cursor:pointer;">&times;</div>`;
+      overlay.innerHTML = `<img src="${imagen}" alt="Imagen ampliada">`;
+      overlay.addEventListener('click', () => overlay.remove());
       document.body.appendChild(overlay);
     }
-
-    function cerrarZoom() {
-      document.querySelector('.zoom-overlay').remove();
-    }
   </script>
+
 </body>
 </html>
